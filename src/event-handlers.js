@@ -11,7 +11,7 @@ export function addNewProjectToDOM(node){
     node.addEventListener("click",()=>{
         
         let title = prompt("What is the project called?");
-        console.log("start3")
+       
         toDoManagerObject.addNewProject(title)
         document.querySelector(".project-container").innerHTML=""
         document.querySelector(".project-container").appendChild(renderProjects(toDoManagerObject.accessToDoList()))
@@ -26,7 +26,12 @@ export function addNewTodoToDOM(node){
         let date = prompt("What's the due date?")
         let description = prompt("Any additional info?")
         toDoManagerObject.addNewToDo(title,priority, date, description)
-        renderTodos(toDoManagerObject.accessToDos())
+        document.querySelector(".todo-container").innerHTML=""
+        document.querySelector(".todo-container").appendChild(renderTodos(toDoManagerObject.accessToDos()))
+  
+        
+        
+        
     
     })
 }
