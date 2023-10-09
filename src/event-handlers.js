@@ -13,4 +13,16 @@ export function addNewProjectToDOM(node){
     })
 }
 
+export function addNewTodoToDOM(node){
+    node.addEventListener("click",()=>{
+        let title = prompt("What is the task called?");
+        let priority = prompt("What is the priority of the task?");
+        let date = prompt("What's the due date?")
+        let description = prompt("Any additional info?")
+        toDoManager.addNewToDo(title,priority, date, description)
+        renderTodos(toDoManagerObject.accessToDoList())
+    
+    })
+}
+
 
