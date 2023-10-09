@@ -1,10 +1,9 @@
-//change projects when project name is clicked
-//add new project
-//add new task
 
-import onLoad from "./on-load"
+import load from "./event-handlers"
 
 window.addEventListener("load",()=>{
-    onLoad()
+    console.log("start2")
+    load()
+   
 
 })

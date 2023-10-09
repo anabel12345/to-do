@@ -1,16 +1,22 @@
 import toDoManager from "./toDosManager"
 import renderProjects from "./render-project"
 import renderTodos from "./render-todos"
+import header from "./render-header"
 
+export const toDoManagerObject = new toDoManager()
+const page = document.querySelector("#content")
 
 
 export function addNewProjectToDOM(node){
     node.addEventListener("click",()=>{
+        
         let title = prompt("What is the project called?");
-        toDoManager.addNewProject(title)
-        //get array of projects
-        renderProjects(toDoManager.accessToDos())
-    })
+        console.log("start3")
+        toDoManagerObject.addNewProject(title)
+        document.querySelector(".project-container").innerHTML=""
+        document.querySelector(".project-container").appendChild(renderProjects(toDoManagerObject.accessToDoList()))
+  
+        })
 }
 
 export function addNewTodoToDOM(node){
@@ -19,8 +25,8 @@ export function addNewTodoToDOM(node){
         let priority = prompt("What is the priority of the task?");
         let date = prompt("What's the due date?")
         let description = prompt("Any additional info?")
-        toDoManager.addNewToDo(title,priority, date, description)
-        renderTodos(toDoManagerObject.accessToDoList())
+        toDoManagerObject.addNewToDo(title,priority, date, description)
+        renderTodos(toDoManagerObject.accessToDos())
     
     })
 }
@@ -28,8 +34,26 @@ export function addNewTodoToDOM(node){
 
 export function changeCurrentProject(node){
     node.addEventListener("click",()=>{
-        toDoManager.changeCurrentProject(node.dataset.index)
+        toDoManagerObject.changeCurrentProject(node.dataset.index)
     })
 }
 
 
+
+//create layout
+export default function load(){
+    page.innerHTML=''
+    
+
+    //create a home project
+    toDoManagerObject.addNewProject("home")
+
+    //create the header
+    page.appendChild(header())
+
+
+    
+
+    page.appendChild(renderProjects(toDoManagerObject.accessToDoList()))
+    page.appendChild(renderTodos(toDoManagerObject.accessToDos()))
+}
