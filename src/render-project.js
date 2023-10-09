@@ -1,6 +1,7 @@
 //takes an array of project objects and returns a node 
 export default function renderProjects (array){
     const node = document.createElement("div")
+    node.classList.add("project-container")
     //takes a project object and returns a DOM node
     function createProject(project){
         let projectTile = document.createElement("button");
