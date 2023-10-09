@@ -9,10 +9,12 @@ export default function toDoManager() {
     function accessCurrentProject(){
         return currentProjectIndex
     }
-    function accessToDos(){
+    function accessToDoList(){
         return toDos;
     }
-
+    function accessToDos(){
+        return toDos[currentProjectIndex].projectTodos;
+    }
 
     // To-do factory function
     function createToDo(title, priority, date, description, project, checked) {
@@ -68,7 +70,7 @@ export default function toDoManager() {
 
    
     return{
-        addNewToDo,addNewProject,changeCurrentProject,accessCurrentProject,accessToDos,deleteTask
+        addNewToDo,addNewProject,changeCurrentProject,accessCurrentProject,accessToDos,deleteTask,accessToDoList
     }
 
 }

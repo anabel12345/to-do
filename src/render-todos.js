@@ -21,8 +21,7 @@ export default function renderTodos  (array){
 
 
     for(let i = 0;i<array.length;i++){
-        node.appendChild(createTodo(array[i],i))
-        
+        node.appendChild(createTodo(array[i],i))    
     }
     return node
 }
