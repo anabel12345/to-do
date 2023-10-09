@@ -26,3 +26,8 @@ export function addNewTodoToDOM(node){
 }
 
 
+export function changeCurrentProject(node){
+    node.addEventListener("click",()=>{
+        toDoManager.changeCurrentProject(node.dataset.index)
+    })
+}
