@@ -13,8 +13,18 @@ export default function toDoManager() {
         return toDos;
     }
     function accessToDos(){
-        console.log(toDos[currentProjectIndex].projectTodos)
         return toDos[currentProjectIndex].projectTodos;
+    }
+    function returnAllTodos(){
+        let arrOfToDos = []
+       
+        for(let i=0;i<toDos.length;i++){
+            console.log(toDos[i].projectTodos)
+            for(let j=0;j<toDos[i].projectTodos.length;j++){
+                arrOfToDos.push(toDos[i].projectTodos[j])
+            }
+        }
+        return arrOfToDos
     }
 
     // To-do factory function
@@ -34,6 +44,7 @@ export default function toDoManager() {
     //creates new todo and adds it to current project
      function addNewToDo(title, priority, date, description) {
         toDos[currentProjectIndex].projectTodos.push ((createToDo(title, priority, date, description, currentProject,false)))
+        // toDos[0].projectTodos.push ((createToDo(title, priority, date, description, currentProject,false)))
        
     }
 
@@ -72,7 +83,7 @@ export default function toDoManager() {
 
    
     return{
-        addNewToDo,addNewProject,changeCurrentProject,accessCurrentProject,accessToDos,deleteTask,accessToDoList
+        addNewToDo,addNewProject,changeCurrentProject,accessCurrentProject,accessToDos,deleteTask,accessToDoList,returnAllTodos
     }
 
 }

@@ -1,4 +1,4 @@
-import { addNewProjectToDOM, addNewTodoToDOM } from "./event-handlers"
+import { addNewProjectToDOM, addNewTodoToDOM, seeAllToDos } from "./event-handlers"
 
 export default function header(){
     const header = document.createElement("div")
@@ -23,6 +23,15 @@ export default function header(){
     btnAddTask.textContent="+task"
     addNewTodoToDOM(btnAddTask)
     header.appendChild(btnAddTask)
+
+
+
+      //button to view all todos
+      const btnAllTodos = document.createElement("button")
+      btnAllTodos.classList.add("see-all-todos")
+      btnAllTodos.textContent="All ToDos"
+      seeAllToDos(btnAllTodos)
+      header.appendChild(btnAllTodos)
 
     return header;
 }

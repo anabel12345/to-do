@@ -49,6 +49,17 @@ export function changeCurrentProject(node){
 
 
 
+
+export function seeAllToDos(node){
+    node.addEventListener("click",()=>{
+        
+        document.querySelector(".todo-container").innerHTML=""
+        document.querySelector(".todo-container").appendChild(renderTodos(toDoManagerObject.returnAllTodos()))
+  
+    })
+}
+
+
 //create layout
 export default function load(){
     page.innerHTML=''
@@ -56,6 +67,7 @@ export default function load(){
 
     //create a home project
     toDoManagerObject.addNewProject("home")
+    
 
     //create the header
     page.appendChild(header())
