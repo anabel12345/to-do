@@ -1,6 +1,4 @@
 export default function toDoManager() {
-
-
     //current project name
       let currentProject = "home"
      let  currentProjectIndex = 0
@@ -32,7 +30,6 @@ export default function toDoManager() {
 
     //creates new todo and adds it to current project
      function addNewToDo(title, priority, date, description) {
-        // console.log(createToDo(title, priority, date, description, currentProject,false))
         toDos[currentProjectIndex].projectTodos.push ((createToDo(title, priority, date, description, currentProject,false)))
        
     }
@@ -42,11 +39,9 @@ export default function toDoManager() {
     //factory function creates new project object
     function createNewProject(name){
         let projectTodos = []
-        let active=false;
         return{
             name,
             projectTodos,
-            active
         }
     }
 

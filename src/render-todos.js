@@ -4,14 +4,15 @@ export default function renderTodos  (array){
     node.classList.add("todo-container")
 
     //takes a todo object and returns a DOM node
-    function createTodo(todo){
+    function createTodo(todo, index){
         let todoCont = document.createElement("div");
         todoCont.classList.add("todo-cont")
         let title = document.createElement("div")
         title.textContent = todo.title
         let description = document.createElement("div")
         description.textContent=todo.description
-        
+        todoCont.dataset.index = index;
+
         todoCont.appendChild(title)
         todoCont.appendChild(description)
         return todoCont;
@@ -20,7 +21,7 @@ export default function renderTodos  (array){
 
 
     for(let i = 0;i<array.length;i++){
-        node.appendChild(createTodo(array[i]))
+        node.appendChild(createTodo(array[i],i))
         
     }
     return node

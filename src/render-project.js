@@ -3,10 +3,10 @@ export default function renderProjects (array){
     const node = document.createElement("div")
     node.classList.add("project-container")
     //takes a project object and returns a DOM node
-    function createProject(project){
+    function createProject(project, index){
         let projectTile = document.createElement("button");
         projectTile.classList.add("project-tile")
-       
+        projectTile.dataset.index = index;
         projectTile.textContent = project.name
         
         return projectTile;
@@ -14,7 +14,7 @@ export default function renderProjects (array){
 
 
     for(let i = 0;i<array.length;i++){
-        node.appendChild(createProject(array[i]))
+        node.appendChild(createProject(array[i],i))
     }
 
     return node;
