@@ -1,7 +1,7 @@
 export default function toDoManager() {
     //current project name
-      let currentProject = "home"
-     let  currentProjectIndex = 0
+      let currentProject = "home";
+     let  currentProjectIndex = 0;
     //array of todos - 2d array, first array is the projects
     let toDos = []
 
@@ -13,6 +13,7 @@ export default function toDoManager() {
         return toDos;
     }
     function accessToDos(){
+        console.log(toDos[currentProjectIndex].projectTodos)
         return toDos[currentProjectIndex].projectTodos;
     }
 
@@ -59,6 +60,7 @@ export default function toDoManager() {
     //changes current project
      function changeCurrentProject(index){
         currentProjectIndex = index;
+        console.log(currentProjectIndex)
     }
 
 

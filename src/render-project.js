@@ -18,7 +18,7 @@ export default function renderProjects (array){
     for(let i = 0;i<array.length;i++){
         node.appendChild(createProject(array[i],i))
     }
-
+    console.log(node)
     changeCurrentProject(node)
 
     return node;

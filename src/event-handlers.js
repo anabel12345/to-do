@@ -39,7 +39,11 @@ export function addNewTodoToDOM(node){
 
 export function changeCurrentProject(node){
     node.addEventListener("click",()=>{
-        toDoManagerObject.changeCurrentProject(node.dataset.index)
+        toDoManagerObject.changeCurrentProject(event.target.dataset.index)
+        
+        document.querySelector(".todo-container").innerHTML=""
+        document.querySelector(".todo-container").appendChild(renderTodos(toDoManagerObject.accessToDos()))
+  
     })
 }
 
