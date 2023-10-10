@@ -1,0 +1,80 @@
+//the callback function is whatever you want to do with the data
+export default function getInfo(callback){
+   
+    //create dialog
+    const dialog=document.createElement("dialog");
+    
+    //create form
+    const form=document.createElement("form");
+
+
+    let title = '';
+    let description = ''
+
+
+    //title
+    const titleParagraph=document.createElement("p")
+    const titleLabel=document.createElement("label")
+    titleLabel.textContent = "Title "
+    let titleInput = document.createElement("input")
+    titleInput.setAttribute('id','title')
+    titleInput.type= 'text'
+    titleInput.setAttribute("name", "title")
+    titleParagraph.appendChild(titleLabel)
+    titleParagraph.appendChild(titleInput)
+
+
+    //description
+    let descriptionCont=document.createElement("p")
+    let descriptionLabel=document.createElement("label")
+    descriptionLabel.textContent = "Description "
+    let desInput = document.createElement("input")
+    desInput.setAttribute('id','description')
+    desInput.setAttribute("type", "text")
+    desInput.setAttribute("name", "description")
+    descriptionCont.appendChild(descriptionLabel)
+    descriptionCont.appendChild(desInput)
+
+   //date
+    let dateCont=document.createElement("p")
+    let dateLabel=document.createElement("label")
+    dateLabel.textContent = "Due Date  "
+    let dateInput = document.createElement("input")
+    dateInput.setAttribute('id','date')
+    dateInput.setAttribute("type", "date")
+    dateInput.setAttribute("name", "date")
+    dateCont.appendChild(dateLabel)
+    dateCont.appendChild(dateInput)
+
+
+
+
+    // submit button
+    let submitCont = document.createElement("p")
+    let btnSubmit = document.createElement("input")
+    btnSubmit.value = "submit"
+    btnSubmit.setAttribute("type","submit")
+    btnSubmit.setAttribute("method","POST")
+    submitCont.appendChild(btnSubmit)
+
+    form.appendChild(titleParagraph)
+     form.appendChild(dateCont)
+    form.appendChild(descriptionCont)
+    form.appendChild(submitCont)
+
+    form.addEventListener("submit",function(e){
+        e.preventDefault()
+      
+         
+         dialog.close();
+         callback(titleInput.value,desInput.value, dateInput.value)
+    })
+
+    dialog.appendChild(form)
+  
+    document.body.appendChild(dialog)
+    dialog.showModal()
+
+
+    
+}

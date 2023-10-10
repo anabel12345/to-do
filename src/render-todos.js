@@ -1,10 +1,12 @@
+import { deleteToDO } from "./event-handlers";
+
 //takes an array of todo objects and returns a node
 export default function renderTodos  (array){
     const node = document.createElement("div")
     node.classList.add("todo-container")
 
     //takes a todo object and returns a DOM node
-    function createTodo(todo, index){
+    function createTodo(todo, index ){
         let todoCont = document.createElement("div");
         todoCont.classList.add("todo-cont")
         let title = document.createElement("div")
@@ -13,8 +15,23 @@ export default function renderTodos  (array){
         description.textContent=todo.description
         todoCont.dataset.index = index;
 
+
+        let date = document.createElement("div")
+        date.textContent = todo.date
+
+        let deleteBtn = document.createElement("button")
+        deleteBtn.textContent = "delete"
+        deleteBtn.classList.add = "delete-btn"
+        deleteToDO(deleteBtn)
+
+        let checkBtn = document.createElement("input")
+        checkBtn.setAttribute("type","checkbox")
+
         todoCont.appendChild(title)
         todoCont.appendChild(description)
+        todoCont.appendChild(date)
+        todoCont.appendChild(deleteBtn)
+        todoCont.appendChild(checkBtn)
         return todoCont;
 
     }

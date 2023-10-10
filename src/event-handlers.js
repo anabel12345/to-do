@@ -2,36 +2,44 @@ import toDoManager from "./toDosManager"
 import renderProjects from "./render-project"
 import renderTodos from "./render-todos"
 import header from "./render-header"
+import getInfo from "./get-user-input"
+import getNewProject from "./get-project-title"
+
 
 export const toDoManagerObject = new toDoManager()
-const page = document.querySelector("#content")
+export const page = document.querySelector("#content")
 
 
 export function addNewProjectToDOM(node){
     node.addEventListener("click",()=>{
         
-        let title = prompt("What is the project called?");
-       
-        toDoManagerObject.addNewProject(title)
-        document.querySelector(".project-container").innerHTML=""
-        document.querySelector(".project-container").appendChild(renderProjects(toDoManagerObject.accessToDoList()))
+        getNewProject((title)=>{
+            toDoManagerObject.addNewProject(title)
+            document.querySelector(".project-container").innerHTML=""
+            document.querySelector(".project-container").appendChild(renderProjects(toDoManagerObject.accessToDoList()))
   
+        }
+
+
+
+
+        )
+      
         })
 }
 
 export function addNewTodoToDOM(node){
     node.addEventListener("click",()=>{
-        let title = prompt("What is the task called?");
-        let priority = prompt("What is the priority of the task?");
-        let date = prompt("What's the due date?")
-        let description = prompt("Any additional info?")
-        toDoManagerObject.addNewToDo(title,priority, date, description)
+
+        getInfo((title, description,date)=>{
+            console.log(title)
+            toDoManagerObject.addNewToDo(title, date, description)
+            document.querySelector(".todo-container").innerHTML=""
+            document.querySelector(".todo-container").appendChild(renderTodos(toDoManagerObject.accessToDos()))
+        })
+     
         document.querySelector(".todo-container").innerHTML=""
         document.querySelector(".todo-container").appendChild(renderTodos(toDoManagerObject.accessToDos()))
-  
-        
-        
-        
     
     })
 }
@@ -77,4 +85,14 @@ export default function load(){
 
     page.appendChild(renderProjects(toDoManagerObject.accessToDoList()))
     page.appendChild(renderTodos(toDoManagerObject.accessToDos()))
+}
+
+
+
+//delete button
+export function deleteToDO(node){
+    node.addEventListener("click",()=>{
+        toDoManagerObject.deleteTask(node.parentNode.dataset.index)
+        node.parentNode.remove()
+    })
 }

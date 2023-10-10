@@ -28,10 +28,9 @@ export default function toDoManager() {
     }
 
     // To-do factory function
-    function createToDo(title, priority, date, description, project, checked) {
+    function createToDo(title, date, description, project, checked) {
         return {
             title,
-            priority,
             date,
             description,
             project,
@@ -42,8 +41,8 @@ export default function toDoManager() {
 
 
     //creates new todo and adds it to current project
-     function addNewToDo(title, priority, date, description) {
-        toDos[currentProjectIndex].projectTodos.push ((createToDo(title, priority, date, description, currentProject,false)))
+     function addNewToDo(title, date, description) {
+        toDos[currentProjectIndex].projectTodos.push ((createToDo(title, date, description, currentProject,false)))
         // toDos[0].projectTodos.push ((createToDo(title, priority, date, description, currentProject,false)))
        
     }
@@ -71,13 +70,17 @@ export default function toDoManager() {
     //changes current project
      function changeCurrentProject(index){
         currentProjectIndex = index;
-        console.log(currentProjectIndex)
+        
     }
 
 
     //deletes tasks
     function deleteTask(index){
-        toDos.splice(index, index+1)
+        console.log(toDos[currentProjectIndex].projectTodos)
+        console.log(index)
+        toDos[currentProjectIndex].projectTodos.splice(index, index+1)
+        console.log(toDos[currentProjectIndex].projectTodos)
+        // console.log(toDos)
     }
     
 

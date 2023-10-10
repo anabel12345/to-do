@@ -12,7 +12,7 @@ export default function header(){
     btnAddProject.textContent="+project"
     //add event listener
     addNewProjectToDOM(btnAddProject)
-    console.log("dsfkl")
+    
     header.appendChild(btnAddProject)
 
 

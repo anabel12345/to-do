@@ -1,5 +1,6 @@
 import { changeCurrentProject } from "./event-handlers";
 
+
 //takes an array of project objects and returns a node 
 export default function renderProjects (array){
     const node = document.createElement("div")
@@ -18,7 +19,6 @@ export default function renderProjects (array){
     for(let i = 0;i<array.length;i++){
         node.appendChild(createProject(array[i],i))
     }
-    console.log(node)
     changeCurrentProject(node)
 
     return node;

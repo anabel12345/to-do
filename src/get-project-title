@@ -1,0 +1,50 @@
+export default function getNewProject(callback){
+    //create dialog
+    const dialog=document.createElement("dialog");
+    
+    //create form
+    const form=document.createElement("form");
+
+
+
+     //title
+     const titleParagraph=document.createElement("p")
+     const titleLabel=document.createElement("label")
+     titleLabel.textContent = "Title "
+     let titleInput = document.createElement("input")
+     titleInput.setAttribute('id','title')
+     titleInput.type= 'text'
+     titleInput.setAttribute("name", "title")
+     titleParagraph.appendChild(titleLabel)
+     titleParagraph.appendChild(titleInput)
+
+
+
+
+     // submit button
+    let submitCont = document.createElement("p")
+    let btnSubmit = document.createElement("input")
+    btnSubmit.value = "submit"
+    btnSubmit.setAttribute("type","submit")
+    btnSubmit.setAttribute("method","POST")
+    submitCont.appendChild(btnSubmit)
+
+    form.appendChild(titleParagraph)
+    form.appendChild(submitCont)
+
+
+
+
+    form.addEventListener("submit",function(e){
+        e.preventDefault()
+         dialog.close();
+         callback(titleInput.value )
+    })
+
+
+
+    dialog.appendChild(form)
+  
+    document.body.appendChild(dialog)
+    dialog.showModal()
+}
