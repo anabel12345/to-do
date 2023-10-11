@@ -27,13 +27,13 @@ export default function renderTodos  (array){
 
         //checkbox
         let checkCont = document.createElement("p")
-        let checkLabel = document.createElement("label")
         let checkBtn = document.createElement("input")
         checkBtn.setAttribute('id','complete-btn')
         checkBtn.setAttribute("type", "checkbox")
         checkBtn.setAttribute("name", "complete-btn")
-        checkCont.appendChild(checkLabel)
+        let checkMark = document.createElement("span")
         checkCont.appendChild(checkBtn)
+        checkCont.appendChild(checkMark)
 
 
       
