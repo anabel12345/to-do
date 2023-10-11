@@ -124,6 +124,7 @@ button.add-new-project, button.add-new-task, button.see-all-todos{
 
 
 .task > :nth-child(4){
+    display:inline;
     padding:5px;
     font-size:1.2rem; 
     border-radius:20px;
@@ -134,9 +135,15 @@ button.add-new-project, button.add-new-task, button.see-all-todos{
 
 
 .task > :nth-child(5){
-   width:50px
+   width:50px;
+   display:inline;
+   padding-left:30px;
 }
 
+
+input[type="checkbox"]{
+    background-color: #fff;
+}
 
 
 
