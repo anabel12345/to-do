@@ -15,13 +15,10 @@ export function addNewProjectToDOM(node){
         
         getNewProject((title)=>{
             toDoManagerObject.addNewProject(title)
-            document.querySelector(".project-container").innerHTML=""
-            document.querySelector(".project-container").appendChild(renderProjects(toDoManagerObject.accessToDoList()))
+            document.querySelector(".project-container").remove()
+            document.querySelector("#content").insertBefore(renderProjects(toDoManagerObject.accessToDoList()), document.querySelector(".todo-container"))
   
         }
-
-
-
 
         )
       
@@ -34,13 +31,11 @@ export function addNewTodoToDOM(node){
         getInfo((title, description,date)=>{
             console.log(title)
             toDoManagerObject.addNewToDo(title, date, description)
-            document.querySelector(".todo-container").innerHTML=""
-            document.querySelector(".todo-container").appendChild(renderTodos(toDoManagerObject.accessToDos()))
-        })
+            
+            document.querySelector(".todo-container").remove()
+            document.querySelector("#content").appendChild(renderTodos(toDoManagerObject.accessToDos()))
+     })
      
-        document.querySelector(".todo-container").innerHTML=""
-        document.querySelector(".todo-container").appendChild(renderTodos(toDoManagerObject.accessToDos()))
-    
     })
 }
 
@@ -49,8 +44,8 @@ export function changeCurrentProject(node){
     node.addEventListener("click",()=>{
         toDoManagerObject.changeCurrentProject(event.target.dataset.index)
         
-        document.querySelector(".todo-container").innerHTML=""
-        document.querySelector(".todo-container").appendChild(renderTodos(toDoManagerObject.accessToDos()))
+        document.querySelector(".todo-container").remove()
+        document.querySelector("#content").appendChild(renderTodos(toDoManagerObject.accessToDos()))
   
     })
 }
@@ -60,10 +55,9 @@ export function changeCurrentProject(node){
 
 export function seeAllToDos(node){
     node.addEventListener("click",()=>{
-        
-        document.querySelector(".todo-container").innerHTML=""
-        document.querySelector(".todo-container").appendChild(renderTodos(toDoManagerObject.returnAllTodos()))
-  
+        document.querySelector(".todo-container").remove()
+        document.querySelector("#content").appendChild(renderTodos(toDoManagerObject.returnAllTodos()))
+ 
     })
 }
 
@@ -71,7 +65,7 @@ export function seeAllToDos(node){
 //create layout
 export default function load(){
     page.innerHTML=''
-    
+    toDoManagerObject.changeCurrentProject(0)
 
     //create a home project
     toDoManagerObject.addNewProject("home")

@@ -6,6 +6,10 @@ export default function header(){
     header.textContent = "//TODO"
 
 
+  //buttons container
+  const btnCont = document.createElement("div")
+
+
     //button appended to header to add new project
     const btnAddProject = document.createElement("button")
     btnAddProject.classList.add("add-new-project")
@@ -13,7 +17,7 @@ export default function header(){
     //add event listener
     addNewProjectToDOM(btnAddProject)
     
-    header.appendChild(btnAddProject)
+    btnCont.appendChild(btnAddProject)
 
 
 
@@ -22,7 +26,7 @@ export default function header(){
     btnAddTask.classList.add("add-new-task")
     btnAddTask.textContent="+task"
     addNewTodoToDOM(btnAddTask)
-    header.appendChild(btnAddTask)
+    btnCont.appendChild(btnAddTask)
 
 
 
@@ -31,7 +35,10 @@ export default function header(){
       btnAllTodos.classList.add("see-all-todos")
       btnAllTodos.textContent="All ToDos"
       seeAllToDos(btnAllTodos)
-      header.appendChild(btnAllTodos)
+      btnCont.appendChild(btnAllTodos)
 
+
+
+      header.appendChild(btnCont)
     return header;
 }
