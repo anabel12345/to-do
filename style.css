@@ -1,0 +1,166 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+}
+body {
+    min-height:100vh;
+    height: auto;
+}
+
+#content {
+    height: 100%;
+    display:grid;
+    grid-template-rows: min-content 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* header styling */
+.header{
+    font-family:sans-serif;
+    font-size:3.5rem;
+    padding:15px 25px;
+    font-weight: 900;
+    background-color:#7AC38F;
+    color:#fff;
+    grid-column: 1/-1;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.header>div{
+    display:flex;
+    align-items:center;
+   
+}
+
+button.add-new-project, button.add-new-task, button.see-all-todos{
+    padding:12px;
+    margin: 0px 5px;
+    font-size:1.2rem; 
+    border-radius:60px;
+    border:none;
+    background-color: #fff;
+} 
+
+
+
+
+
+
+
+
+/* styling for the sidebar with the projects */
+
+.project-container{
+    padding:20px 0px;
+    background-color: #C7EEFF;
+    min-height: 100vh;
+   display:flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   grid-column-start:1;
+   
+}
+
+
+.project-container>*.project-tile{
+   
+    padding:15px;
+    border:none;
+   background-color: #C7EEFF;
+   font-size:20px;
+  
+}
+.project-container>*.project-tile:hover{
+    background-color: rgba(40, 45, 48, 0.2);
+    
+}
+
+
+
+
+
+/* styling for the todo container */
+
+.todo-container{
+    height:100%;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+   gap:10px;
+   padding:10px;
+   grid-auto-rows: 180px;
+}
+
+
+
+.task{
+    background-color: #C7EEFF;
+    border-radius:10%;
+    padding:20px;
+    font-size:18px;
+    font-family: sans-serif;
+
+} 
+.task > :first-child{
+    font-size:2rem;
+    margin-bottom:8px;
+}
+
+
+.task > :first-child{
+    font-size:2rem;
+    margin-bottom:6px;
+}
+
+.task > :nth-child(3){
+    
+    margin-top:2px;
+}
+
+
+
+.task > :nth-child(4){
+    padding:5px;
+    font-size:1.2rem; 
+    border-radius:20px;
+    border:1px;
+    background-color: #fff;
+    margin-top:20px;
+}
+
+
+.task > :nth-child(5){
+   width:50px
+}
+
+
+
+
+
+/* styling for the dialogs */
+
+
+dialog{
+    margin:auto;
+    border:none;
+    border-radius:40px;
+    font-family:sans-serif;
+    background-color: rgba(40, 45, 48, 0.7);
+    color:white;
+}
+dialog>form{
+    width:100%;
+    height:100%;
+    padding:200px 50px;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+
