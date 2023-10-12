@@ -1,9 +1,17 @@
+import { store, getArr } from "./storage"
+
 export default function toDoManager() {
     //current project name
       let currentProject = "home";
      let  currentProjectIndex = 0;
     //array of todos - 2d array, first array is the projects
     let toDos = []
+
+
+//set array
+    function setToDOs(arr){
+        toDos = arr;
+    }
 
 
     function accessCurrentProject(){
@@ -44,7 +52,7 @@ export default function toDoManager() {
      function addNewToDo(title, date, description) {
         toDos[currentProjectIndex].projectTodos.push ((createToDo(title, date, description, currentProject,false)))
         // toDos[0].projectTodos.push ((createToDo(title, priority, date, description, currentProject,false)))
-       
+       store(toDos)
     }
 
 
@@ -63,6 +71,7 @@ export default function toDoManager() {
     //creates new project + adds it to todo array
      function addNewProject(name){
         toDos.push(createNewProject(name))
+        store(toDos)
     }
 
 
@@ -86,7 +95,7 @@ export default function toDoManager() {
 
    
     return{
-        addNewToDo,addNewProject,changeCurrentProject,accessCurrentProject,accessToDos,deleteTask,accessToDoList,returnAllTodos
+        addNewToDo,addNewProject,changeCurrentProject,accessCurrentProject,accessToDos,deleteTask,accessToDoList,returnAllTodos,setToDOs
     }
 
 }

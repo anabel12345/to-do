@@ -4,6 +4,7 @@ import renderTodos from "./render-todos"
 import header from "./render-header"
 import getInfo from "./get-user-input"
 import getNewProject from "./get-project-title"
+import { store, getArr } from "./storage"
 
 
 export const toDoManagerObject = new toDoManager()
@@ -34,6 +35,7 @@ export function addNewTodoToDOM(node){
             
             document.querySelector(".todo-container").remove()
             document.querySelector("#content").appendChild(renderTodos(toDoManagerObject.accessToDos()))
+
      })
      
     })
@@ -67,10 +69,17 @@ export default function load(){
     page.innerHTML=''
     toDoManagerObject.changeCurrentProject(0)
 
-    //create a home project
+
+    if(getArr() !==null){
+        toDoManagerObject.setToDOs(getArr())
+
+
+
+    }else{
+        //create a home project
     toDoManagerObject.addNewProject("home")
     
-
+    }
     //create the header
     page.appendChild(header())
 
@@ -79,7 +88,10 @@ export default function load(){
 
     page.appendChild(renderProjects(toDoManagerObject.accessToDoList()))
     page.appendChild(renderTodos(toDoManagerObject.accessToDos()))
-}
+
+
+
+    }
 
 
 
